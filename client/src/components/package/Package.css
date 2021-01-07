@@ -1,0 +1,60 @@
+.pkg {
+  width: 100%;
+  height: 100%;
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 5px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.pkg__title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: green;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid green;
+}
+
+
+.pkg__list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.pkg__item {
+  background-color: lightgrey;
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.pkg__item__attribute {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.pkg__item__attribute > span {
+  width: 100px; 
+  display: inline-block;
+}
+
+.pkg__item__attribute__btn {
+  display: inline-block;
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: red;
+} 
+
+.pkg__item__attribute__btn:hover {
+  box-shadow: 0 0 5px black;
+}

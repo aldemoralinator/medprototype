@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("./Migrations.sol");
+var HerbalMedicine = artifacts.require("./HerbalMedicine.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(HerbalMedicine);
 };
