@@ -6,6 +6,7 @@
   padding: 5px; 
   display: flex;
   flex-direction: column;
+  max-width: 650px;
 }
 
 .pkg__title {
@@ -17,12 +18,11 @@
   border-bottom: 1px solid green;
 }
 
-
 .pkg__list {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -31,7 +31,7 @@
   background-color: lightgrey;
   color: black;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
 }
 
@@ -39,6 +39,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; 
+  display: flex;
 }
 
 .pkg__item__attribute > span {
@@ -46,15 +47,112 @@
   display: inline-block;
 }
 
+.pkg__item__attribute__send__form__submit {
+  display: inline-block;
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: green;
+} 
+
 .pkg__item__attribute__btn {
   display: inline-block;
   padding: 0 10px;
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  background-color: red;
+  background-color: royalblue;
 } 
 
-.pkg__item__attribute__btn:hover {
+.pkg__item__attribute__send__form__submit:hover,
+.pkg__item__attribute__btn {
   box-shadow: 0 0 5px black;
+}
+
+
+.pkg__item__history { 
+  /* max-width: 650px; */
+  display: grid;
+  justify-content: start;
+  grid-auto-flow: column; 
+  padding: 7px;
+  overflow-y: hidden;
+  overflow-x: scroll;  
+}
+
+.pkg__item__history__transfer {
+  width: 300px;
+  padding: 5px;
+  overflow: hidden;
+  margin-right: 5px;
+  background-color: grey;
+  color: white;
+}
+
+.pkg__item__history__transfer__attribute {
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.pkg__item__history__transfer__address {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pkg__create { 
+  margin: 10px 0;
+}
+
+.pkg__create__title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: green;
+  margin-bottom: 10px;
+}
+
+.pkg__create__form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pkg__create__form__group {
+  display: flex;
+  margin: 5px 0;
+}
+
+
+.pkg__create__form__label {
+  width: 85px; 
+}
+
+.pkg__create__form__text-input {
+  flex: 1;
+}
+
+.pkg__create__form__submit {
+  align-self: flex-end;
+  color: green;
+  border: 1px solid green;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.pkg__create__form__submit:hover {
+  background-color: green;
+  color: white;
+}
+
+
+.open-btn {  
+  padding: 0 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: green; 
 }

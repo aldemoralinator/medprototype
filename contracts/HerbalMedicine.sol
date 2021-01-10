@@ -177,12 +177,14 @@ contract HerbalMedicine {
     }
     
     function sendPackage( uint256 _packageKey, address _packageReciever ) public onlyMember onlyPackageHandler( _packageKey, _packageReciever ) {
-        packages[_packageKey].currentHandler = _packageReciever;
+        packages[_packageKey].currentReciever = _packageReciever;
     }
 
     function recievePackage( uint256 _packageKey ) public onlyPackageReciever( _packageKey ) {
         transferCount++;
         packages[_packageKey].transferCount++;
+        packages[_packageKey].currentHandler = msg.sender;
+        packages[_packageKey].currentReciever = address(0);
         transfers[transferCount] = Transfer(
             transferCount,
             history[packages[_packageKey].historyKey][packages[_packageKey].transferCount - 1].destination,

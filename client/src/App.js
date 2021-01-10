@@ -36,9 +36,9 @@ class App extends Component {
 
       this.setState({ web3, web3Accounts, currentAccount, contract });
     } catch (error) { 
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-      );
+      // alert(
+      //   `Failed to load web3, accounts, or contract. Check console for details.`,
+      // );
       console.error(error);
     }
   };
@@ -47,7 +47,11 @@ class App extends Component {
     const { web3, web3Accounts, currentAccount, contract } = this.state;
 
     if (!web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+        <div className="install-metamask">
+          Please install Metamask..
+        </div>
+      );
     }
 
 
@@ -63,13 +67,17 @@ class App extends Component {
                   currentAccount={currentAccount} 
                   contract={contract}/>
               </div>
-              <div className="component__main__right">
-                <Account 
-                  web3={web3} 
-                  web3Accounts={web3Accounts} 
-                  currentAccount={currentAccount} 
-                  contract={contract} />
-              </div>
+              { currentAccount.role == 0 ?
+                <div className="component__main__right">
+                  <Account 
+                    web3={web3} 
+                    web3Accounts={web3Accounts} 
+                    currentAccount={currentAccount} 
+                    contract={contract} />
+                </div> : 
+                <span></span>
+              }
+              
             </div> :
             <HomePage 
               web3={web3} 

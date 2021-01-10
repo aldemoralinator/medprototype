@@ -71,21 +71,25 @@ export class Account extends Component {
                                 <span>Name:</span>
                                 {account.name}
                             </div> 
-                            <div className="acct__item__attribute">
-                                <span>Membership:</span>
-                                { account.isMember ? 
-                                    <div className="acct__item__attribute__remove"
-                                        onClick={()=>this.removeAccount(account.accountAddress)}
-                                    >
-                                        remove
-                                    </div> :
-                                    <div className="acct__item__attribute__accept"
-                                        onClick={()=>this.approveAccount(account.accountAddress)}
-                                    >   
-                                        accept
-                                    </div>
-                                }
-                            </div> 
+                            { account.role != 0 ?
+                                <div className="acct__item__attribute">
+                                    <span>Membership:</span>
+                                    { account.isMember ? 
+                                        <div className="acct__item__attribute__remove"
+                                            onClick={()=>this.removeAccount(account.accountAddress)}
+                                        >
+                                            remove
+                                        </div> :
+                                        <div className="acct__item__attribute__accept"
+                                            onClick={()=>this.approveAccount(account.accountAddress)}
+                                        >   
+                                            accept
+                                        </div>
+                                    }
+                                </div> :
+                                <span></span>
+                            }
+                            
                         </div>
                     )}
                 </div> 

@@ -7,11 +7,12 @@
 }
 
 .home__form {
-    width: 300px;
+    width: 400px;
     padding: 40px;
     border: 1px solid rgb(9, 58, 9);
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .home__form-title {

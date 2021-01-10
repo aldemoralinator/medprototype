@@ -9,7 +9,7 @@ export class HomePage extends Component {
 
     onSubmitRegisterAccount = (event) => {
         event.preventDefault();   
-        if (this.state.inputName != "") this.registerAccount();
+        if (this.state.inputName !== "") this.registerAccount();
     }
     
     onChangeSetInputAccountName = (event) => {
