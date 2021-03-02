@@ -45,12 +45,14 @@ export class Account extends Component {
 
     approveAccount = async (address) => {
         const { web3Accounts, contract } = this.props;
-        await contract.methods.allowAccount(address).send({ from: web3Accounts[0] });
+        await contract.methods.allowAccount(address).send({ from: web3Accounts[0] }); 
+        window.location.reload(false);
     }
 
     removeAccount = async (address) => {
         const { web3Accounts, contract } = this.props;
-        await contract.methods.removeAccount(address).send({ from: web3Accounts[0] });
+        await contract.methods.removeAccount(address).send({ from: web3Accounts[0] }); 
+        window.location.reload(false);
     }
 
     render() {

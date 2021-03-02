@@ -1,23 +1,22 @@
-import React, { Component } from "react";
+import React, { useEffect, useReducer } from 'react'
 import HerbalMedicine from "./contracts/HerbalMedicine.json";
-import getWeb3 from "./getWeb3";
-import HomePage from "./components/homepage/HomePage"
-import Account from "./components/account/Account"
-import Package from "./components/package/Package"
-
+import getWeb3 from "./getWeb3"; 
 import "./App.css";
+import { 
+  Context, 
+  initialState, 
+  reducer 
+} from './app/store/store'
+import Routes from './Routes'
 
-class App extends Component {
+const App = () => {
 
-  state = {     
-    web3: null, 
-    web3Accounts: null, 
-    contract: null,
-    currentAccount: null, 
-  };
+  const [store, dispatch] = useReducer(reducer, initialState);
 
-  componentDidMount = async () => {
-    try { 
+  useEffect( () => { initializeWeb3() }, [])
+
+  const initializeWeb3 = async () => { 
+    try {
       const web3 = await getWeb3(); 
       const web3Accounts = await web3.eth.getAccounts(); 
       const networkId = await web3.eth.net.getId();
@@ -25,69 +24,30 @@ class App extends Component {
       const contract = new web3.eth.Contract(
         HerbalMedicine.abi,
         deployedNetwork && deployedNetwork.address,
-      );  
+      );   
 
-      let currentAccount = null; 
-
+      let currentAccount = null;
       await contract.methods.getAccounts(web3Accounts[0]).call().then(
         account => currentAccount = account,
-        error => console.log("error")
-      ); 
-
-      this.setState({ web3, web3Accounts, currentAccount, contract });
-    } catch (error) { 
-      // alert(
-      //   `Failed to load web3, accounts, or contract. Check console for details.`,
-      // );
-      console.error(error);
-    }
-  };
-
-  render() {
-    const { web3, web3Accounts, currentAccount, contract } = this.state;
-
-    if (!web3) {
-      return (
-        <div className="install-metamask">
-          Please install Metamask..
-        </div>
+        error => console.log(error)
       );
+
+      dispatch({ type: "setCurrentAccount", payload: currentAccount })
+      dispatch({ type: "setWeb3", payload: web3 })
+      dispatch({ type: "setWeb3Accounts", payload: web3Accounts })
+      dispatch({ type: "setContract", payload: contract })
+
+    } catch (error) {
+      alert("Failed to fetch metamask credentials")
+      console.log(error);
     }
+  } 
 
-
-    return (
-      <div className="component" > 
-        {
-          currentAccount.isMember ?
-            <div className="component__main">
-              <div className="component__main__left">
-                <Package 
-                  web3={web3} 
-                  web3Accounts={web3Accounts} 
-                  currentAccount={currentAccount} 
-                  contract={contract}/>
-              </div>
-              { currentAccount.role == 0 ?
-                <div className="component__main__right">
-                  <Account 
-                    web3={web3} 
-                    web3Accounts={web3Accounts} 
-                    currentAccount={currentAccount} 
-                    contract={contract} />
-                </div> : 
-                <span></span>
-              }
-              
-            </div> :
-            <HomePage 
-              web3={web3} 
-              web3Accounts={web3Accounts} 
-              currentAccount={currentAccount} 
-              contract={contract}/>
-        } 
-      </div>
-    );
-  }
+  return (
+    <Context.Provider value={{ store, dispatch }}>
+      <Routes />
+    </Context.Provider>
+  )
 }
 
-export default App; 
+export default App;

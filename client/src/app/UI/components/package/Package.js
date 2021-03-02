@@ -107,12 +107,18 @@ export class Package extends Component {
   }
 
   sendPackage = async (packageKey, packageReciever) => {
-    const { contract, web3Accounts } = this.props;
-    await contract.methods
-      .sendPackage(packageKey, packageReciever)
-      .send({ from: web3Accounts[0] })
-
-    this.getPackages();
+    try {
+      const { contract, web3Accounts } = this.props;
+      await contract.methods
+        .sendPackage(packageKey, packageReciever)
+        .send({ from: web3Accounts[0] })
+  
+      this.getPackages();
+    } catch(e) {
+      alert("invalid address")
+      console.error(e.code);
+    }
+    
   }
 
   recievePackage = async (packageKey) => {
