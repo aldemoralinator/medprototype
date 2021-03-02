@@ -1,11 +1,8 @@
 .body {
-  width: 100vw;
-  height: 100vh;
-  background-color: lightcoral;
+  background-color: white;
 }
 
 .main {
-  border: 1px solid red;
   max-width: 1200px;
   min-height: calc(100vh);
   margin: 0 auto;

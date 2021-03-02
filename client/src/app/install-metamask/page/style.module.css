@@ -1,6 +1,158 @@
 .main {
-  color: green;
-  width: 50px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.main_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main_box_info {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.main_box_info_primary {
+  font-size: 100px;
+  font-weight: 700;
+  color: #20253b;
+}
+
+.main_box_info_secondary {
+  font-size: 65px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #115a56;
+}
+
+.main_box_info_tertiary {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffa500;
+}
+
+.main_box_info_btn {
   height: 50px;
-  border: 1px solid green;
+  width: 200px;
+  margin-top: 30px;
+  border: 1px solid #115a56;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: #115a56;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.main_box_info_btn:hover {
+  box-shadow: 0 0 10px rgba(17, 90, 86, 0.5);
+}
+
+.main_box_divider {
+  width: 5px;
+  height: 275px;
+  margin: auto 20px;
+  background-color: #115a56;
+  border: 2px solid #115a56;
+}
+
+.main_box_video {
+  width: 500px;
+  height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  /* padding-top: calc(30vh); */
+}
+
+.main_box_video::-webkit-scrollbar {
+  width: 30px;
+}
+
+.main_box_video::-webkit-scrollbar-track {
+  background: none;
+}
+
+.main_box_video::-webkit-scrollbar-thumb {
+  background: #f6f6f6;
+}
+
+.main_box_video::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+}
+
+.main_box_video_title {
+  font-size: 35px;
+  font-weight: 700;
+  color: #115a56;
+  margin-bottom: 25px;
+}
+
+.main_box_video_intro {
+  font-size: 16px;
+  color: #ffa500;
+  margin-bottom: 20px;
+}
+
+.main_box_video_step {
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_box_video_step_title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffa500;
+  margin-bottom: 10px;
+}
+
+.main_box_video_step_instruction {
+  font-size: 20px;
+  font-weight: 700;
+  color: #20253b;
+  margin-bottom: 5px;
+}
+
+.main_box_video_step_thumbnail {
+  max-width: 400px;
+  height: 200px;
+  padding: 10px;
+  border: 1px dashed lightgrey;
+  margin-bottom: 35px;
+  overflow: hidden;
+}
+
+.main_box_video_step_thumbnail_img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.main_box_video_step_refresh {
+  height: 50px;
+  width: 200px;
+  margin-top: 30px;
+  border: 1px solid #ffa500;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: #ffa500;
+  font-size: 35px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.main_box_video_step_refresh:hover {
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
 }

@@ -46,3 +46,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(assets/fonts/Roboto/Roboto-Regular.ttf) format('ttf');
+}

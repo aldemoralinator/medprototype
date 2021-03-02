@@ -12,22 +12,30 @@ import Account from './app/account'
 import Package from './app/package'
 import Error from './app/error'
 import InstallMetamask from './app/install-metamask';
+import AccountCreate from './app/account/create';
+import AccountWaiting from './app/account/waiting';
+import AccountTest from './app/UI/components/account/Account';
 
 const Routes = () => {
 
   const { store } = useContext(Context)
 
-  const {web3, currentAccount} = store
+  const {web3, web3Accounts, contract, currentAccount} = store
 
   if (!web3) return <InstallMetamask />;
 
-  if (currentAccount && currentAccount.accountAddress === 0) return <Account />; // create
+  if (currentAccount && currentAccount.accountAddress == 0) return <AccountCreate />;
 
-  if (currentAccount && !currentAccount.isMember) return <Account />; // pending
+  if (currentAccount && !currentAccount.isMember) return <AccountWaiting />;
+
+  // return <AccountTest web3={web3} web3Accounts={web3Accounts} contract={contract} currentAccount={currentAccount} />
 
   return (
     <Router>
       <Switch>
+        <Route path="/install-metamask">
+          <InstallMetamask />
+        </Route>
         <Route path="/accounts">
           <Account />
         </Route>
